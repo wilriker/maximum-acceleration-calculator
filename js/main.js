@@ -9,7 +9,8 @@
 		pulleyRadius = 0.51,
 		torqueLossUstep = 0.71,
 		minimalLagEnabled = true,
-		torqueLossMinimalLag = 0.098;
+		torqueLossMinimalLag = 0.098,
+		axisFrictionFactor = 1.0;
 
 	let calcAcceleration = function() {
 		let torqueAtCurrent = ratedTorque * currentPercentage,
@@ -17,7 +18,7 @@
 			totalTorque = torqueAtUstep * (minimalLagEnabled ? torqueLossMinimalLag : 1),
 			force = totalTorque / pulleyRadius * motorCount,
 			rotorMass = (motorCount * rotorInertia) / (pulleyRadius * pulleyRadius) / 1000.0,
-			totalMass = rotorMass + axisMass,
+			totalMass = rotorMass + axisMass * axisFrictionFactor,
 			acceleration = (force/totalMass) * 1000;
 
 		$('#torque_at_current').text(torqueAtCurrent.toFixed(2));
@@ -69,6 +70,10 @@
 			torqueLossMinimalLag = this.valueAsNumber / 100.0;
 			calcAcceleration();
 		});
+		$('#axis_friction_factor').change(function() {
+			axisFrictionFactor = this.valueAsNumber;
+			calcAcceleration();
+		})
 	};
 
 	accelCalculator.init = function() {
