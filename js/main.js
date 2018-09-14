@@ -18,7 +18,7 @@
 			totalTorque = torqueAtUstep * (minimalLagEnabled ? torqueLossMinimalLag : 1),
 			force = totalTorque / pulleyRadius * motorCount,
 			rotorMass = (motorCount * rotorInertia) / (pulleyRadius * pulleyRadius) / 1000.0,
-			totalMass = rotorMass + axisMass * axisFrictionFactor,
+			totalMass = rotorMass + (axisMass * axisFrictionFactor),
 			acceleration = (force/totalMass) * 1000;
 
 		$('#torque_at_current').text(torqueAtCurrent.toFixed(2));
