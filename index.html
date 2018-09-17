@@ -91,12 +91,12 @@
 					</div>
 					<div class="col-md-2">
 						<div class="form-check">
-							<label class="form-check-label" for="minimal_lag_enabled">Minimal lag enabled</label>
+							<label class="form-check-label" for="minimal_lag_enabled">Safety factor enabled</label>
 							<input type="checkbox" checked="checked" class="form-check-input" id="minimal_lag_enabled"/>
 						</div>
 					</div>
 					<div class="col-md-2" id="extruder_1">
-						<label for="torque_reduction_minimal_lag">Torque reduction minimal lag:</label>
+						<label for="torque_reduction_minimal_lag">Torque reduction safety factor:</label>
 						<div class="input-group">
 							<input type="number" class="form-control" id="torque_reduction_minimal_lag" required="required" value="9.8" min="0" max="100" step="any"/>
 							<span class="input-group-addon">%</span>
@@ -121,7 +121,7 @@
 							<td class="number"><span id="torque_at_ustep"></span>N.cm</td>
 						</tr>
 						<tr>
-							<td><abbr title="Contains reductions due to minimal lag requirements. See Advanced Settings.">Total</abbr> torque:</td>
+							<td><abbr title="Contains reductions from safety factor. See Advanced Settings.">Total</abbr> torque:</td>
 							<td class="number"><span id="total_torque"></span>N.cm</td>
 						</tr>
 						<tr>
