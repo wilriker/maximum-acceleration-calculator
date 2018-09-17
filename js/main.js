@@ -10,7 +10,8 @@
 		torqueLossUstep = 0.71,
 		minimalLagEnabled = true,
 		torqueLossMinimalLag = 0.098,
-		axisFrictionFactor = 1.0;
+		axisFrictionFactor = 1.0,
+		gearRatio = 1.0;
 
 	let calcAcceleration = function() {
 		let torqueAtCurrent = ratedTorque * currentPercentage,
@@ -18,7 +19,7 @@
 			totalTorque = torqueAtUstep * (minimalLagEnabled ? torqueLossMinimalLag : 1),
 			force = totalTorque / pulleyRadius * motorCount,
 			rotorMass = (motorCount * rotorInertia) / (pulleyRadius * pulleyRadius) / 1000.0,
-			totalMass = rotorMass + (axisMass * axisFrictionFactor),
+			totalMass = (rotorMass + (axisMass * axisFrictionFactor)) / (gearRatio * gearRatio),
 			acceleration = (force/totalMass) * 1000;
 
 		$('#torque_at_current').text(torqueAtCurrent.toFixed(2));
@@ -27,6 +28,13 @@
 		$('#force').text(force.toFixed(2));
 		$('#total_mass').text(totalMass.toFixed(2));
 		$('#acceleration').text(acceleration.toFixed(2))
+	};
+
+	let updateGearRatio = function() {
+		let gearRatio1 = parseFloat($('#gear_ratio_1').val()),
+			gearRatio2 = parseFloat($('#gear_ratio_2').val());
+
+		gearRatio = gearRatio1 / gearRatio2;
 	};
 
 	let registerChangeHandlers = function() {
@@ -74,6 +82,10 @@
 			axisFrictionFactor = this.valueAsNumber;
 			calcAcceleration();
 		})
+		$('[id^=gear_ratio_').change(function() {
+			updateGearRatio();
+			calcAcceleration();
+		});
 	};
 
 	accelCalculator.init = function() {

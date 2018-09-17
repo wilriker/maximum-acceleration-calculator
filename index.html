@@ -81,8 +81,9 @@
 				</button>
 			</h3>
 			<div class="collapse" id="adv_settings">
+				<h4>Torque Reductions</h4>
 				<div class="row" id="extruders">
-					<div class="col-md-2" id="extruder_1">
+					<div class="col-md-2">
 						<label for="torque_reduction_ustep">Torque reduction microstepping:</label>
 						<div class="input-group">
 							<input type="number" class="form-control" id="torque_reduction_ustep" data-number="1" required="required" value="71" min="0" max="100" step="any"/>
@@ -95,16 +96,35 @@
 							<input type="checkbox" checked="checked" class="form-check-input" id="minimal_lag_enabled"/>
 						</div>
 					</div>
-					<div class="col-md-2" id="extruder_1">
+					<div class="col-md-2">
 						<label for="torque_reduction_minimal_lag">Torque reduction safety factor:</label>
 						<div class="input-group">
 							<input type="number" class="form-control" id="torque_reduction_minimal_lag" required="required" value="9.8" min="0" max="100" step="any"/>
 							<span class="input-group-addon">%</span>
 						</div>
 					</div>
-					<div class="col-md-2" id="extruder_1">
+				</div>
+				<h4>Mass Modifiers</h4>
+				<div class="row" id="extruders">
+					<div class="col-md-2">
 						<label for="axis_friction_factor">Axis friction factor:</label>
 						<input type="number" class="form-control" id="axis_friction_factor" required="required" value="1" min="0" step="any"/>
+					</div>
+					<div class="col-md-4">
+						<label for="gear_ratio">Gear ratio:</label>
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<input type="number" min="0.1" step="any" value="1" id="gear_ratio_1" class="form-control">
+									</td>
+									<td>&nbsp;:&nbsp;</td>
+									<td>
+										<input type="number" min="0.1" step="any" value="1" id="gear_ratio_2" class="form-control">
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
