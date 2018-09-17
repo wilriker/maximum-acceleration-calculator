@@ -8,15 +8,14 @@
 		rotorInertia = 54,
 		pulleyRadius = 0.51,
 		torqueLossUstep = 0.71,
-		minimalLagEnabled = true,
-		torqueLossMinimalLag = 0.098,
+		torqueLossSafetyFactor = 0.098,
 		axisFrictionFactor = 1.0,
 		gearRatio = 1.0;
 
 	let calcAcceleration = function() {
 		let torqueAtCurrent = ratedTorque * currentPercentage,
 			torqueAtUstep = torqueAtCurrent * (microstepping ? torqueLossUstep : 1),
-			totalTorque = torqueAtUstep * (minimalLagEnabled ? torqueLossMinimalLag : 1),
+			totalTorque = torqueAtUstep * torqueLossSafetyFactor,
 			force = totalTorque / pulleyRadius * motorCount,
 			rotorMass = (motorCount * rotorInertia) / (pulleyRadius * pulleyRadius) / 1000.0,
 			totalMass = (rotorMass + (axisMass * axisFrictionFactor)) / (gearRatio * gearRatio),
@@ -70,12 +69,8 @@
 			torqueLossUstep = this.valueAsNumber / 100.0;
 			calcAcceleration();
 		});
-		$('#minimal_lag_enabled').change(function() {
-			minimalLagEnabled = this.checked;
-			calcAcceleration();
-		});
-		$('#torque_reduction_minimal_lag').change(function() {
-			torqueLossMinimalLag = this.valueAsNumber / 100.0;
+		$('#torque_reduction_safety_factor').change(function() {
+			torqueLossSafetyFactor = this.valueAsNumber / 100.0;
 			calcAcceleration();
 		});
 		$('#axis_friction_factor').change(function() {

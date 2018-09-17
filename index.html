@@ -91,15 +91,9 @@
 						</div>
 					</div>
 					<div class="col-md-2">
-						<div class="form-check">
-							<label class="form-check-label" for="minimal_lag_enabled">Safety factor enabled</label>
-							<input type="checkbox" checked="checked" class="form-check-input" id="minimal_lag_enabled"/>
-						</div>
-					</div>
-					<div class="col-md-2">
-						<label for="torque_reduction_minimal_lag">Torque reduction safety factor:</label>
+						<label for="torque_reduction_safety_factor">Torque reduction <abbr title="A stepper motor has 1 full step of angle/position error when exerting maximum torque, which is on the edge of stalling, so de-rating to a smaller value is a good idea. Set to 100% to disable.">safety factor</abbr>:</label>
 						<div class="input-group">
-							<input type="number" class="form-control" id="torque_reduction_minimal_lag" required="required" value="9.8" min="0" max="100" step="any"/>
+							<input type="number" class="form-control" id="torque_reduction_safety_factor" required="required" value="9.8" min="0" max="100" step="any"/>
 							<span class="input-group-addon">%</span>
 						</div>
 					</div>
