@@ -113,28 +113,33 @@
 				<table class="table table-sm">
 					<tbody>
 						<tr>
-							<td>Torque at current:</td>
+							<td>Torque at runtime current:</td>
 							<td class="number"><span id="torque_at_current"></span>N.cm</td>
+							<td class="description">Running at a lower current will reduce torque about linear to the reduction in current</td>
 						</tr>
 						<tr>
-							<td>Torque at microstepping:</td>
+							<td>Torque when using microstepping:</td>
 							<td class="number"><span id="torque_at_ustep"></span>N.cm</td>
+							<td class="description">Using microstepping will further reduce torque. Factor can be set under Advanced Settings</td>
 						</tr>
 						<tr>
 							<td><abbr title="Contains reductions from safety factor. See Advanced Settings.">Total</abbr> torque:</td>
 							<td class="number"><span id="total_torque"></span>N.cm</td>
+							<td class="description">The (by default enabled) safety factor will further reduce torque but makes sure that the motor can really delivert this</td>
 						</tr>
 						<tr>
 							<td>Force:</td>
 							<td class="number"><span id="force"></span>N</td>
+							<td class="description">Resulting force that the motor can apply with the given pulley
 						</tr>
 						<tr>
 							<td><abbr title="This contains mass added by rotor inertia">Total</abbr> mass:</td>
 							<td class="number"><span id="total_mass"></span>kg</td>
+							<td class="description">Total mass of axis mass (multiplied by Axis Friction Factor) and rotor inertia</td>
 						</tr>
 						<tr>
 							<td><h4>Max acceleration:</h4></td>
-							<td class="number"><h4><span id="acceleration"></span>mm/s&sup2;</h4></td>
+							<td colspan="2" class="number"><h4><span id="acceleration"></span>mm/s&sup2;</h4></td>
 						</tr>
 					</tbody>
 				</table>

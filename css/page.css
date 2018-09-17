@@ -44,3 +44,7 @@ div.well {
 .number {
 	text-align: right;
 }
+
+.description {
+	color: #777;
+}
