@@ -61,7 +61,7 @@
 			axisMass = this.valueAsNumber / 1000.0;
 			calcAcceleration();
 		});
-		$('#rotor_intertia').change(function() {
+		$('#rotor_inertia').change(function() {
 			rotorInertia = this.valueAsNumber;
 			calcAcceleration();
 		});
